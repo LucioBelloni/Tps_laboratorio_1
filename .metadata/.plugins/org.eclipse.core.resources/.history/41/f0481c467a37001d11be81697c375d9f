@@ -1,0 +1,13 @@
+/*
+ * submenuConfederacioes.h
+ *
+ *  Created on: 18 sep. 2022
+ *      Author: Lucio
+ */
+
+#ifndef SUBMENUCONFEDERACIOES_H_
+#define SUBMENUCONFEDERACIOES_H_
+
+int mostrarMenuConfederacion(int*,int*, int*, int*, int*,int*);
+
+#endif /* SUBMENUCONFEDERACIOES_H_ */
