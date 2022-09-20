@@ -13,27 +13,26 @@ int utn_getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo
 	int bufferInt;
 
 
-	if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && minimo <= maximo ){
-
-
 			printf("%s",mensaje );
-			scanf("%d", &bufferInt);
-				if(bufferInt >= minimo && bufferInt <=maximo){
+			fflush(stdin);
+			if(scanf("%d", &bufferInt)== 1){
+					if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && minimo <= maximo ){
 
-					*pResultado = bufferInt;
-					retorno = 0;
+						if(bufferInt >= minimo && bufferInt <=maximo){
 
+								*pResultado = bufferInt;
+								retorno = 0;
+						}
+					}
 
-				}else{
-					printf("%s",mensajeError);
+			}else{
+				return retorno;
+				printf("%s",mensajeError);
+			}
 
-				}
+			return  retorno;
 
 	}
-
-	return  retorno;
-}
-
 
 
 int utn_getNumeroFlotante(float* pResultado, char* mensaje, char* mensajeError, float minimo, float maximo, int reintentos){
@@ -46,7 +45,8 @@ int utn_getNumeroFlotante(float* pResultado, char* mensaje, char* mensajeError, 
 
 		do{
 			printf("%s",mensaje );
-			scanf("%f", &bufferfloat);
+			fflush(stdin);
+			if(scanf("%f", &bufferfloat)== 1){}
 				if(bufferfloat >= minimo && bufferfloat <=maximo){
 
 					*pResultado = bufferfloat;
@@ -62,13 +62,6 @@ int utn_getNumeroFlotante(float* pResultado, char* mensaje, char* mensajeError, 
 
 	return  retorno;
 }
-
-
-
-
-
-
-
 
 
 int utn_getCaracter(char* pResultado, char* mensaje, char* mensajeError, char minimo, char maximo, int reintentos){
@@ -99,23 +92,57 @@ int utn_getCaracter(char* pResultado, char* mensaje, char* mensajeError, char mi
 		return  retorno;
 }
 
-int utn_getNumeroBasico(int* pResultado, char* mensaje){
+int utn_getNumeroBasico(int* pResultado, char* mensaje, char* mensajeError){
 
 	int rtn = -1;
 	int bufferInt;
 
 
-	if(pResultado != NULL && mensaje != NULL){
-			printf("%s",mensaje );
-			scanf("%d", &bufferInt);
+		printf("%s",mensaje );
+		fflush(stdin);
+		if(scanf("%d", &bufferInt) == 1){
 
-			*pResultado = bufferInt;
-			rtn =  0;
-	}
+			if(pResultado != NULL && mensaje != NULL){
+
+				*pResultado = bufferInt;
+
+				rtn =  0;
+
+			}
+
+		}else{
+			return rtn;
+			printf("%s",mensajeError);
+
+		}
+
 	return rtn;
 }
 
+int obtenerValidacionLetra(int* resultado, char *mensajeError, int minimo, int maximo){
+
+	int rtn = -1;
+
+	int bufferInt;
+
+	if(resultado !=  NULL && mensajeError != NULL && minimo <= maximo ){
 
 
+		fflush(stdin);
+		if(scanf("%d", &bufferInt) == 1){}
 
+		if(bufferInt >= minimo && bufferInt <=maximo){
+
+			*resultado = bufferInt;
+
+				rtn = 0;
+		}else{
+			printf("%s",mensajeError);
+		}
+
+	}
+
+	return rtn;
+
+}
 

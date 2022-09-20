@@ -1,9 +1,5 @@
-16:22:40 **** Incremental Build of configuration Debug for project TP1 ****
+23:46:27 **** Incremental Build of configuration Debug for project TP1 ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP1.o" "..\\src\\TP1.c" 
-..\src\TP1.c: In function 'main':
-..\src\TP1.c:33:6: warning: variable 'costoMantenimiento' set but not used [-Wunused-but-set-variable]
-  int costoMantenimiento;
-      ^~~~~~~~~~~~~~~~~~
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
 gcc -o TP1.exe "src\\TP1.o" "src\\subMenuConfederaciones.o" "src\\utn.o" 
 Info: Nothing to build for TP1
