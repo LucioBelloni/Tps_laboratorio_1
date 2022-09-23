@@ -16,19 +16,19 @@ int utn_getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo
 			printf("%s",mensaje );
 			fflush(stdin);
 			if(scanf("%d", &bufferInt)== 1){
-					if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && minimo <= maximo ){
+				if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && minimo <= maximo ){
 
-						if(bufferInt >= minimo && bufferInt <=maximo){
+					if(bufferInt >= minimo && bufferInt <=maximo){
 
-								*pResultado = bufferInt;
-								retorno = 0;
+							*pResultado = bufferInt;
+							retorno = 0;
+					}else{
+						printf("%s",mensajeError);
 						}
-					}
+				}
 
-			}else{
-				return retorno;
-				printf("%s",mensajeError);
 			}
+
 
 			return  retorno;
 
@@ -99,7 +99,6 @@ int utn_getNumeroBasico(int* pResultado, char* mensaje, char* mensajeError){
 
 
 		printf("%s",mensaje );
-		fflush(stdin);
 		if(scanf("%d", &bufferInt) == 1){
 
 			if(pResultado != NULL && mensaje != NULL){
@@ -111,7 +110,7 @@ int utn_getNumeroBasico(int* pResultado, char* mensaje, char* mensajeError){
 			}
 
 		}else{
-			return rtn;
+
 			printf("%s",mensajeError);
 
 		}
@@ -119,30 +118,76 @@ int utn_getNumeroBasico(int* pResultado, char* mensaje, char* mensajeError){
 	return rtn;
 }
 
-int obtenerValidacionLetra(int* resultado, char *mensajeError, int minimo, int maximo){
+int utn_obtenerValidacionLetra(int* resultado, char* mensajeError, int minimo, int maximo){
 
 	int rtn = -1;
 
 	int bufferInt;
 
-	if(resultado !=  NULL && mensajeError != NULL && minimo <= maximo ){
-
 
 		fflush(stdin);
-		if(scanf("%d", &bufferInt) == 1){}
+		if(scanf("%d", &bufferInt) == 1){
 
-		if(bufferInt >= minimo && bufferInt <=maximo){
+			if(resultado !=  NULL && mensajeError != NULL && minimo <= maximo ){
 
-			*resultado = bufferInt;
+				if(bufferInt >= minimo && bufferInt <=maximo){
 
-				rtn = 0;
+						*resultado = bufferInt;
+
+						rtn = 0;
+				}else{
+					printf("%s",mensajeError);
+				}
+
+			}
 		}else{
 			printf("%s",mensajeError);
-		}
-
-	}
+			 }
 
 	return rtn;
 
 }
+
+void utn_obtenerPromedio(float* resultado, int total, int cantidad ){
+
+
+	if(resultado != NULL && total > 0  && cantidad > 0 ){
+
+		*resultado = (float)total / cantidad;
+
+	}
+
+
+}
+
+int utn_getNumeroBasico1(float* pResultado, char* mensaje, char* mensajeError){
+
+
+	int rtn = -1;
+	float bufferfloat;
+
+
+			printf("%s",mensaje );
+			if(scanf("%f", &bufferfloat) == 1){
+
+				if(pResultado != NULL && mensaje != NULL){
+
+					*pResultado = bufferfloat;
+
+					rtn =  0;
+
+				}
+
+			}else{
+
+				printf("%s",mensajeError);
+
+			}
+
+
+			return rtn;
+
+
+}
+
 

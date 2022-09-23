@@ -8,5 +8,5 @@
 #ifndef SUBMENUCONFEDERACIONES_H_
 #define SUBMENUCONFEDERACIONES_H_
 
-int mostrarMenuConfederacion(int*confederaciones, int* confederacionAsiatica,int* confederacionAfricana, int* confederacionDeNorteAmerica, int* confederacionSudamericana , int* confederacionEuropea,int* confederacionOceania );
+int utn_mostrarMenuConfederacion(int* confederaciones, int* confederacionAsiatica,int* confederacionAfricana, int* confederacionDeNorteAmerica, int* confederacionSudamericana , int* confederacionEuropea,int* confederacionOceania );
 #endif /* SUBMENUCONFEDERACIONES_H_ */

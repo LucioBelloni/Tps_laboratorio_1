@@ -12,7 +12,11 @@ int utn_getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo
 int utn_getNumeroFlotante(float* pResultado, char* mensaje, char* mensajeError, float minimo, float maximo, int reintentos);
 int utn_getCaracter(char* pResultado, char* mensaje, char* mensajeError, char minimo, char maximo, int reintentos);
 int utn_getNumeroBasico(int* pResultado, char* mensaje, char* mensajeError);
-int obtenerValidacionLetra(int* resultado, char *mensajeError, int minimo, int maximo);
+int utn_obtenerValidacionLetra(int* resultado, char* mensajeError, int minimo, int maximo);
+void utn_obtenerPromedio(float* resultado, int total, int cantidad );
+int utn_getNumeroBasico1(float* pResultado, char* mensaje, char* mensajeError);
+
+
 
 
 

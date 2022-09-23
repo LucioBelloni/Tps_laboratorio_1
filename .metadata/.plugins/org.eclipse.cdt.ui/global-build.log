@@ -1,5 +1,5 @@
-23:46:27 **** Incremental Build of configuration Debug for project TP1 ****
+05:33:55 **** Incremental Build of configuration Debug for project TP1 ****
 Info: Internal Builder is used for build
-gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\utn.o" "..\\src\\utn.c" 
+gcc -O0 -g3 -Wall -c -fmessage-length=0 -o "src\\TP1.o" "..\\src\\TP1.c" 
 gcc -o TP1.exe "src\\TP1.o" "src\\subMenuConfederaciones.o" "src\\utn.o" 
 Info: Nothing to build for TP1

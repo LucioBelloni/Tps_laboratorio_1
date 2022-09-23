@@ -1,7 +1,7 @@
 /*
  ============================================================================
  Name        : TP1.c
- Author      : 
+ Author      : Belloni Lucio
  Version     :
  Copyright   : Your copyright notice
  Description : Hello World in C, Ansi-style
@@ -30,17 +30,29 @@ int main(void) {
 	int retornoNumero;
 	int confederaciones;
 	int retornoConfederacion;
-	int costoMantenimiento;
+	int costoMantenimientoTotal;
+	int camiseta;
+	int jugadoresTotales;
+	int CostoDeMantenientoEuropeoAumento;
+	int CostoDeMantenientoFinalEuropeoAumento;
+	float promedioAsia;
+	float promedioAfrica;
+	float promedioZonaDelNorte;
+	float promedioSudamerica;
+	float promedioEuropa;
+    float promedioOceania;
+
+
+
+
 
 
 	// acumuladores
 	int acumuladorHospedaje;
 	int acumuladorComida;
 	int acumuladorTransporte;
-	int acumuladorArqueros;
-	int acumuladorDefensores;
-	int acumuladorMedioCampistas;
-	int acumuladorDelanteros;
+
+
 
 	// contadores
 
@@ -50,6 +62,10 @@ int main(void) {
 	int contadorSudamerica;
 	int contadorEuropa;
 	int contadorOceania;
+	int contadorArqueros;
+	int contadorDefensores;
+	int contadorMedioCampistas;
+	int contadorDelanteros;
 
 	// dar valores
 	arqueros = 0;
@@ -59,23 +75,25 @@ int main(void) {
 	costoDeHospedaje =  0;
 	costoDeComida = 0;
 	costoDeTransporte = 0;
+	promedioAsia = 0;
+	promedioAfrica = 0;
+	promedioZonaDelNorte = 0;
+	promedioSudamerica = 0;
+	promedioEuropa = 0;
+	promedioOceania = 0;
+	costoMantenimientoTotal = 0;
+	CostoDeMantenientoEuropeoAumento = 0;
+	CostoDeMantenientoFinalEuropeoAumento = 0;
 
 
-	int banderaMantenimiento;
-	int banderaJugadores;
-	int banderaRealizarCalculos;
-
-
-	char respuesta = 's';
+	char respuesta = 'n';
 
 	// acumuladores
 	acumuladorHospedaje = 0;
 	acumuladorComida = 0;
 	acumuladorTransporte = 0;
-	acumuladorArqueros = 0;
-	acumuladorDefensores = 0;
-	acumuladorMedioCampistas = 0;
-	acumuladorDelanteros = 0;
+
+
 
 	// contadores
 	contadorAsia = 0;
@@ -84,6 +102,15 @@ int main(void) {
 	contadorSudamerica = 0;
 	contadorEuropa = 0;
 	contadorOceania = 0;
+	contadorArqueros = 0;
+	contadorDefensores = 0;
+	contadorMedioCampistas = 0;
+	contadorDelanteros = 0;
+
+
+	int banderaMantenimiento;
+	int banderaJugadores;
+	int banderaRealizarCalculos;
 
 	// banderas
 	banderaMantenimiento = 0;
@@ -105,9 +132,9 @@ int main(void) {
 			   " Delanteros-> %d\n"
 			   "3.Realizar todos los calculos\n"
 			   "4.Informar todos los resultados\n"
-			   "5.Salir\n", acumuladorHospedaje,acumuladorComida,acumuladorTransporte,acumuladorArqueros,acumuladorDefensores,acumuladorMedioCampistas, acumuladorDelanteros );
-		obtenerValidacionLetra(&menuPrincipal ,"    Eror deberias ingresar un numero del [1 al 5]" ,1, 5);
-
+			   "5.Salir\n", acumuladorHospedaje,acumuladorComida,acumuladorTransporte,contadorArqueros,contadorDefensores,contadorMedioCampistas, contadorDelanteros );
+			utn_obtenerValidacionLetra(&menuPrincipal ,"   Eror deberias ingresar un numero del [1 al 5]" ,1, 5);
+		if(menuPrincipal >= 1){
 		switch(menuPrincipal){
 			case 1:
 				banderaMantenimiento = 1;
@@ -115,11 +142,13 @@ int main(void) {
 						   "2 Costo de comida  ->\n"
 						   "3 Costo de transporte ->\n"
 						   "Ingrese una opcion: ");
-					obtenerValidacionLetra(&costosDeMantenimientoSubMenu ,"     Eror deberias ingresar un numero del [1 al 3]" ,1, 3);
+						utn_obtenerValidacionLetra(&costosDeMantenimientoSubMenu ,"     Eror deberias ingresar un numero del [1 al 3]" ,1, 3);
 					switch(costosDeMantenimientoSubMenu){
 						case 1:
 
 							retornoNumero = utn_getNumeroBasico(&costoDeHospedaje, "Ingrese el costo de hospedaje", "Error ingreso una letra");
+
+
 							if(retornoNumero == 0){
 								acumuladorHospedaje+=costoDeHospedaje;
 								printf("el costo es: %d",costoDeHospedaje);
@@ -131,7 +160,7 @@ int main(void) {
 
 						case 2:
 
-							retornoNumero = utn_getNumeroBasico (&costoDeComida, "Ingrese el costo de Comida", "Error ingreso una letra");
+							retornoNumero = utn_getNumeroBasico(&costoDeComida, "Ingrese el costo de Comida", "Error ingreso una letra");
 								if(retornoNumero == 0){
 									acumuladorComida+= costoDeComida;
 									printf("el costo es: %d",costoDeComida );
@@ -142,10 +171,10 @@ int main(void) {
 						break;
 
 						case 3:
-							retornoNumero = utn_getNumeroBasico (&costoDeTransporte, "Ingrese el costo de Transporte", "Error ingreso una letra");
+							retornoNumero = utn_getNumeroBasico(&costoDeTransporte, "Ingrese el costo de Transporte", "Error ingreso una letra");
 								if(retornoNumero == 0){
 									acumuladorTransporte+=costoDeTransporte;
-									printf("el costo es: %d",costoDeTransporte );
+									printf("el costo es: %d",costoDeTransporte);
 								}else{
 									printf("Hubo un error...");
 								}
@@ -153,12 +182,11 @@ int main(void) {
 
 						break;
 
-
 					}
-
 
 			break;
 			case 2:
+
 				banderaJugadores = 1;
 
 					printf("1. Arqueros ->\n"
@@ -166,120 +194,158 @@ int main(void) {
 						   "3. Medio campistas ->\n"
 						   "4. Delanteros ->\n"
 						   "Ingrese una opcion: ");
-					obtenerValidacionLetra(&cargaDeJugadores ,"    Eror deberias ingresar un numero del [1 al 4]" ,1, 4);
+					utn_obtenerValidacionLetra(&cargaDeJugadores ,"    Error deberias ingresar un numero del [1 al 4]" ,1, 4);
+
 					switch(cargaDeJugadores){
 						case 1:
 
-							if(acumuladorArqueros != 2 ){
-								retornoNumero =  utn_getNumero(&arqueros,"Ingrese a los arqueros", " Error.. Rango validado [0 - 2]", 1, 2);
-								if(retornoNumero  == 0){
-									printf("La cantidad de arqueros es %d ", arqueros);
-									acumuladorArqueros+= arqueros;
+							if(arqueros < 2 ){
+								contadorArqueros++;
+
+									utn_getNumeroBasico(&camiseta, "Ingrese el numero de su camiseta", "Error deberias ingresar un numero ");
+
+										retornoConfederacion = utn_mostrarMenuConfederacion(&confederaciones, &contadorAsia,&contadorAfrica, &contadorZonaDelNorte, &contadorSudamerica ,&contadorEuropa,&contadorOceania);
+											if(retornoConfederacion == 0){
+												printf("Se guardo correctamente...  ");
+											}else{
+												printf("Error... algo anda maLLLLL");
+													contadorArqueros--;
+												 }
+								}else{
+									printf("... Ya estan el total de los arqueros ...");
 								}
-							}else{
-									printf("   ...Ya esta el total de arqueros...");
-							     }
+
+							arqueros = contadorArqueros;
 						break;
 						case 2:
 
-							if(acumuladorDefensores != 8 ){
-								retornoNumero =  utn_getNumero(&defensores,"Ingrese a los defensores", "Error.. Rango validado [1 - 8]", 1, 8);
-									if(retornoNumero  == 0){
-										printf("La cantidad de defensores son %d ", defensores);
-											acumuladorDefensores+= defensores;
-									}
+							if(defensores < 8 ){
+									contadorDefensores++;
+										utn_getNumeroBasico(&camiseta, "Ingrese el numero de su camiseta", "Error deberias ingresar un numero ");
+
+												retornoConfederacion = utn_mostrarMenuConfederacion(&confederaciones, &contadorAsia,&contadorAfrica, &contadorZonaDelNorte, &contadorSudamerica ,&contadorEuropa,&contadorOceania);
+													if(retornoConfederacion == 0){
+														printf("Se guardo correctamente...  %d  ",contadorAsia);
+													}else{
+														printf("Error... algo anda maLLLLL");
+														contadorDefensores--;
+													}
+
+							defensores = contadorDefensores;
 
 							}else{
-									printf("   ...Ya esta el total de defensores...");
-								 }
+								printf("... Ya estan el total de los defensores ...");
+							}
 
 						break;
 						case 3:
-							if(acumuladorMedioCampistas != 8 ){
-								retornoNumero =  utn_getNumero(&medioCampistas,"Ingrese a los medioCampistas", "Error.. Rango validado [1 - 8]", 1, 8);
-									if(retornoNumero  == 0){
-										printf("La cantidad de medioCampistas son %d ", medioCampistas);
-										acumuladorMedioCampistas+= medioCampistas;
-									}
+							if(medioCampistas < 8 ){
+								contadorMedioCampistas++;
+										utn_getNumeroBasico(&camiseta, "Ingrese el numero de su camiseta", "Error deberias ingresar un numero ");
+
+
+
+												retornoConfederacion = utn_mostrarMenuConfederacion(&confederaciones, &contadorAsia,&contadorAfrica, &contadorZonaDelNorte, &contadorSudamerica ,&contadorEuropa,&contadorOceania);
+												if(retornoConfederacion == 0  ){
+													printf("Se guardo correctamente...  ");
+												}else{
+													printf("Error... algo anda mal");
+														contadorMedioCampistas--;
+
+												}
+
+
 
 							}else{
 								printf("   ...Ya esta el total de medioCampistas...");
 								 }
+
+							medioCampistas = contadorMedioCampistas;
+
 						break;
 						case 4:
-							if(acumuladorDelanteros != 4 ){
-								retornoNumero =  utn_getNumero(&delanteros,"Ingrese a los delanteros", "Error.. Rango validado [1 - 4]", 1, 4);
-									if(retornoNumero  == 0){
-										printf("La cantidad de delanteros son %d ", delanteros);
-										acumuladorDelanteros+= delanteros;
-									}
+							if(delanteros < 4 ){
+								contadorDelanteros++;
+										utn_getNumeroBasico(&camiseta, "Ingrese el numero de su camiseta", "Error deberias ingresar un numero ");
+
+												retornoConfederacion = utn_mostrarMenuConfederacion(&confederaciones, &contadorAsia,&contadorAfrica, &contadorZonaDelNorte, &contadorSudamerica ,&contadorEuropa,&contadorOceania);
+												if(retornoConfederacion == 0){
+													printf("Se guardo correctamente...  ");
+												}else{
+														printf("Error... algo anda mal");
+														contadorDelanteros--;
+											 	 	 }
+
+
 							}else{
 									printf("   ...Ya esta el total de delanteros...");
 								 }
-						break;
+						delanteros = contadorDelanteros;
 					}
-
-					/*retornoConfederacion = mostrarMenuConfederacion(&confederaciones, &contadorAsia,&contadorAfrica, &contadorZonaDelNorte, &contadorSudamerica ,&contadorEuropa,&contadorOceania);
-					if(retornoConfederacion == 0){
-						printf("Se guardo correctamente... ");
-					}else{
-						printf("Error... algo anda mal");
-					}*/
-
 			break;
 			case 3:
-				banderaRealizarCalculos = 1;
-					if(banderaMantenimiento == 0 && banderaJugadores == 0){
+					if(banderaMantenimiento == 1 && banderaJugadores == 1){
+						banderaRealizarCalculos = 1;
+							costoMantenimientoTotal = acumuladorHospedaje + acumuladorComida + acumuladorTransporte;
+
+							jugadoresTotales =  contadorDelanteros + contadorMedioCampistas + contadorDefensores + contadorArqueros;
+
+							 utn_obtenerPromedio(&promedioAsia, jugadoresTotales, contadorAsia);
+							 utn_obtenerPromedio(&promedioAfrica, jugadoresTotales, contadorAfrica);
+							 utn_obtenerPromedio(&promedioZonaDelNorte, jugadoresTotales, contadorZonaDelNorte);
+							 utn_obtenerPromedio(&promedioSudamerica, jugadoresTotales, contadorSudamerica);
+							 utn_obtenerPromedio(&promedioEuropa, jugadoresTotales, contadorEuropa);
+							 utn_obtenerPromedio(&promedioOceania, jugadoresTotales, contadorOceania);
+
+
+
+							 if(contadorEuropa > contadorAsia && contadorEuropa > contadorAfrica && contadorEuropa > contadorZonaDelNorte &&  contadorEuropa > contadorSudamerica && contadorEuropa > contadorOceania ){
+
+								 CostoDeMantenientoEuropeoAumento = costoMantenimientoTotal * 0.35;
+								 CostoDeMantenientoFinalEuropeoAumento =  costoMantenimientoTotal  + CostoDeMantenientoEuropeoAumento ;
+							 };
+
+					}else{
+
 						printf("Debe ingresar el costo de mantemientos y a los jugadores  para seguir...");
 					}
 
-					costoMantenimiento = (acumuladorHospedaje + acumuladorComida + acumuladorTransporte)/ 3;
-
-
 			break;
 			case 4:
-				banderaMantenimiento = 0;
-				banderaJugadores = 0;
-				banderaRealizarCalculos = 0;
 
+					if(banderaMantenimiento == 1 && banderaJugadores == 1 && banderaRealizarCalculos == 1){
 
+								printf("   Informar todos los Resultados\n"
+								"Porcentaje Uefa %.2f\n"
+								"Porcentaje Conmebol %.2f\n"
+								"Porcentaje Concacaf %.2f\n"
+								"Porcentaje Afc %.2f\n"
+								"Porcentaje Ofc %.2f\n"
+								"Porcentaje Caf %.2f\n",promedioEuropa,promedioSudamerica,promedioZonaDelNorte,promedioAsia,promedioOceania,promedioAfrica);
 
-					if(banderaMantenimiento == 0 && banderaJugadores == 0 && banderaRealizarCalculos == 0){
-						printf("Debe ingresar el costo de mantenimientos, cargar a los jugadores  y por ultimo deberias  realizar todos los calculos para poder seguir...");
-
+					if(CostoDeMantenientoEuropeoAumento != 0){
+						printf("el costo de mantenimiento era de %d y recibio un aumento de %d $, su nuevo valor es de %d: $",costoMantenimientoTotal,CostoDeMantenientoEuropeoAumento,CostoDeMantenientoFinalEuropeoAumento);
 					}
 
 
 
+					}else{
+						printf("Debe ingresar el costo de mantenimientos, cargar a los jugadores  y por ultimo deberias  realizar todos los calculos para poder seguir...");
 
-
+					}
 			break;
 			case 5:
 				printf("¿Esta seguro que desea salir? s/n");
 				fflush(stdin);
-				scanf("%c", &respuesta);
+				scanf("%c",&respuesta);
+
 
 			break;
 
-
-
+		  }
 		}
-
-	}while(respuesta != 'n' );
-
-
-
-	if(costoMantenimiento > 0 ){
-		printf("El costo es %d", costoMantenimiento);
-	}
+	}while(respuesta != 's' );
 
 	return EXIT_SUCCESS;
 }
 
-/*respuesta = utn_getCaracter(&letra, "letra?\n","Error la letra debe ser desde A hasta J\n", 'A','J',1);
-
-		if(respuesta == 0){
-				printf("La letra  es: %c\n", letra);
-			}else{
-				printf("\nError");
-			}*/
