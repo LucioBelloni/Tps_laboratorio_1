@@ -1,0 +1,24 @@
+/*
+ * subMenuConfederaciones.h
+ *
+ *  Created on: 18 sep. 2022
+ *      Author: Lucio
+ */
+
+#ifndef SUBMENUCONFEDERACIONES_H_
+#define SUBMENUCONFEDERACIONES_H_
+/**
+ * \fn int utn_mostrarMenuConfederacion(int*, int*, int*, int*, int*, int*, int*)
+ * \brief
+ *
+ * \param confederaciones devuelve como parametro la condeferacion
+ * \param confederacionAsiatica
+ * \param confederacionAfricana
+ * \param confederacionDeNorteAmerica
+ * \param confederacionSudamericana
+ * \param confederacionEuropea
+ * \param confederacionOceania
+ * \return
+ */
+int utn_mostrarMenuConfederacion(int* confederaciones, int* confederacionAsiatica,int* confederacionAfricana, int* confederacionDeNorteAmerica, int* confederacionSudamericana , int* confederacionEuropea,int* confederacionOceania );
+#endif /* SUBMENUCONFEDERACIONES_H_ */

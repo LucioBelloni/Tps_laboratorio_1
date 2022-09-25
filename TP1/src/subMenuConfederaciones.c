@@ -19,6 +19,7 @@ int utn_mostrarMenuConfederacion(int* confederaciones, int* confederacionAsiatic
 	int contadorEuropa;
 	int contadorOceania;
 	int retorno = -1;
+	int retornoConfederacion;
 
 	contadorAsia = 0;
 	contadorAfrica = 0;
@@ -30,52 +31,49 @@ int utn_mostrarMenuConfederacion(int* confederaciones, int* confederacionAsiatic
 
 		if(confederacionAsiatica != NULL && confederacionAfricana != NULL && confederacionDeNorteAmerica != NULL && confederacionSudamericana != NULL && confederacionEuropea != NULL && confederacionOceania != NULL ){
 
-					printf("\n      Ingrese a la confederacion que sea su equipo\n");
-					printf("1. AFC ->\n"
-						   "2. CAF ->\n"
-						   "3. CONCACAF ->\n"
-						   "4. CONMEBOL ->\n"
-						   "5. UEFA ->\n"
-						   "6. OFC ->\n "
-						   "Ingrese una opcion: ");
-						scanf("%d", confederaciones);
-					//obtenerValidacionLetra(&confederaciones ,"Eror deberias ingresar un numero del [1 al 6]" ,1, 6);
-			if(*confederaciones <= 6 ){
-					switch(*confederaciones){
-						case 1:
-							 contadorAsia++;
-							*confederacionAsiatica = contadorAsia;
-						break;
-						case 2:
-							 contadorAfrica++;
-							*confederacionAfricana = contadorAfrica;
-							 printf("Cantidad de africanos es: %d", *confederacionAfricana );
-						break;
-						case 3:
-							contadorZonaDelNorte++;
-							*confederacionDeNorteAmerica = contadorZonaDelNorte;
-						break;
-						case 4:
-							contadorSudamerica++;
-							*confederacionSudamericana = contadorSudamerica;
-							printf("Cantidad de subamericano es: %d",contadorSudamerica );
-						break;
-						case 5:
-							 contadorEuropa++;
-							*confederacionEuropea = contadorEuropa;
-						break;
-						case 6:
-							 contadorOceania++;
-							*confederacionOceania = contadorOceania;
-						break;
+			retornoConfederacion = 	utn_getNumeroEnteroConMaxMin(confederaciones, "\n      Ingrese a la confederacion que sea su equipo\n"
+																			  "1. AFC ->\n"
+																			  "2. CAF ->\n"
+																			  "3. CONCACAF ->\n"
+																			  "4. CONMEBOL ->\n"
+																			  "5. UEFA ->\n"
+																			  "6. OFC ->\n "
+																			  "Ingrese una opcion: ","Eror deberias ingresar un numero del [1 al 6]", 1,6);
+					if(retornoConfederacion == 0){
+						if(*confederaciones <= 6 ){
+							switch(*confederaciones){
+								case 1:
+									contadorAsia++;
+									*confederacionAsiatica = contadorAsia;
+								break;
+								case 2:
+									contadorAfrica++;
+									*confederacionAfricana = contadorAfrica;
+								break;
+								case 3:
+									contadorZonaDelNorte++;
+									*confederacionDeNorteAmerica = contadorZonaDelNorte;
+								break;
+								case 4:
+									contadorSudamerica++;
+									*confederacionSudamericana = contadorSudamerica;
+								break;
+								case 5:
+									contadorEuropa++;
+									*confederacionEuropea = contadorEuropa;
+								break;
+								case 6:
+									contadorOceania++;
+									*confederacionOceania = contadorOceania;
+								break;
 
-					}
+							}
 					retorno = 0;
 
-			}else{
-
-				retorno = -1;
-			}
+					}else{
+						retorno = -1;
+						 }
+				}
 		}
 		return retorno;
 }

@@ -7,89 +7,56 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int utn_getNumero(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo){
+int utn_getNumeroSinMaxNiMin(int* pResultado, char* mensaje, char* mensajeError){
 
 	int retorno = -1;
 	int bufferInt;
 
-
 			printf("%s",mensaje );
 			fflush(stdin);
 			if(scanf("%d", &bufferInt)== 1){
-				if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && minimo <= maximo ){
 
-					if(bufferInt >= minimo && bufferInt <=maximo){
+				if(pResultado != NULL && mensaje != NULL && mensajeError != NULL  ){
 
 							*pResultado = bufferInt;
 							retorno = 0;
-					}else{
-						printf("%s",mensajeError);
-						}
-				}
+				}else{
+					printf("%s",mensajeError);
+					 }
+			}else{
+				printf("Error..Ingreso una letra");
+				 }
 
-			}
+
 
 
 			return  retorno;
 
-	}
+			}
 
 
-int utn_getNumeroFlotante(float* pResultado, char* mensaje, char* mensajeError, float minimo, float maximo, int reintentos){
+int utn_getNumeroEnteroConMaxMin(int* pResultado, char* mensaje, char* mensajeError, int minimo, int maximo){
 
 	int retorno = -1;
-	float bufferfloat;
+	int bufferint;
 
-
-	if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && minimo <= maximo && reintentos >= 0 ){
-
-		do{
 			printf("%s",mensaje );
 			fflush(stdin);
-			if(scanf("%f", &bufferfloat)== 1){}
-				if(bufferfloat >= minimo && bufferfloat <=maximo){
-
-					*pResultado = bufferfloat;
-					retorno = 0;
-					break;
-
-				}else{
-					printf("%s",mensajeError);
-					reintentos--;
+			if(scanf("%d", &bufferint)== 1){
+				if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && minimo <= maximo ){
+						if(bufferint >= minimo && bufferint <=maximo){
+								*pResultado = bufferint;
+								retorno = 0;
+						}else{
+							printf("%s",mensajeError);
+							 }
 				}
-		}while(reintentos >= 0);
-	}
+			}else{
+				printf("Error.. Ingreso una letra");
+			}
+
 
 	return  retorno;
-}
-
-
-int utn_getCaracter(char* pResultado, char* mensaje, char* mensajeError, char minimo, char maximo, int reintentos){
-
-	int retorno = -1;
-	char bufferChar;
-
-
-		if(pResultado != NULL && mensaje != NULL && mensajeError != NULL && minimo <= maximo && reintentos >= 0 ){
-
-			do{
-				printf("%s",mensaje );
-				fflush(stdin);
-				scanf("%c", &bufferChar);
-					if(bufferChar >= minimo && bufferChar <=maximo){
-
-						*pResultado = bufferChar;
-						retorno = 0;
-						break;
-
-					}else{
-						printf("%s",mensajeError);
-						reintentos--;
-					}
-			}while(reintentos >= 0);
-		}
-
-		return  retorno;
 }
 
 int utn_getNumeroBasico(int* pResultado, char* mensaje, char* mensajeError){
@@ -107,11 +74,10 @@ int utn_getNumeroBasico(int* pResultado, char* mensaje, char* mensajeError){
 
 				rtn =  0;
 
-			}
+			}else{
+				printf("%s",mensajeError);
 
-		}else{
-
-			printf("%s",mensajeError);
+				}
 
 		}
 
@@ -124,70 +90,38 @@ int utn_obtenerValidacionLetra(int* resultado, char* mensajeError, int minimo, i
 
 	int bufferInt;
 
-
 		fflush(stdin);
 		if(scanf("%d", &bufferInt) == 1){
 
 			if(resultado !=  NULL && mensajeError != NULL && minimo <= maximo ){
-
-				if(bufferInt >= minimo && bufferInt <=maximo){
-
-						*resultado = bufferInt;
-
-						rtn = 0;
-				}else{
-					printf("%s",mensajeError);
+					if(bufferInt >= minimo && bufferInt <=maximo){
+							*resultado = bufferInt;
+							rtn = 0;
+					}else{
+						printf("%s",mensajeError);
+						}
 				}
+		}else{
+			printf("Error ingrese un numero \n");
 
 			}
-		}else{
-			printf("%s",mensajeError);
-			 }
 
-	return rtn;
+
+		return rtn;
 
 }
 
 void utn_obtenerPromedio(float* resultado, int total, int cantidad ){
 
 
-	if(resultado != NULL && total > 0  && cantidad > 0 ){
+	if(resultado != NULL ){
 
-		*resultado = (float)total / cantidad;
+		*resultado = (float)cantidad / total;
 
 	}
 
 
 }
 
-int utn_getNumeroBasico1(float* pResultado, char* mensaje, char* mensajeError){
-
-
-	int rtn = -1;
-	float bufferfloat;
-
-
-			printf("%s",mensaje );
-			if(scanf("%f", &bufferfloat) == 1){
-
-				if(pResultado != NULL && mensaje != NULL){
-
-					*pResultado = bufferfloat;
-
-					rtn =  0;
-
-				}
-
-			}else{
-
-				printf("%s",mensajeError);
-
-			}
-
-
-			return rtn;
-
-
-}
 
 
