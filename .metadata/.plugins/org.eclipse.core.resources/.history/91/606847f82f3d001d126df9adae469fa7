@@ -44,27 +44,27 @@ int utn_mostrarMenuConfederacion(int* confederaciones, int* confederacionAsiatic
 							switch(*confederaciones){
 								case 1:
 									contadorAsia++;
-									*confederacionAsiatica+= contadorAsia;
+									*confederacionAsiatica = contadorAsia;
 								break;
 								case 2:
 									contadorAfrica++;
-									*confederacionAfricana += contadorAfrica;
+									*confederacionAfricana = contadorAfrica;
 								break;
 								case 3:
 									contadorZonaDelNorte++;
-									*confederacionDeNorteAmerica += contadorZonaDelNorte;
+									*confederacionDeNorteAmerica = contadorZonaDelNorte;
 								break;
 								case 4:
 									contadorSudamerica++;
-									*confederacionSudamericana += contadorSudamerica;
+									*confederacionSudamericana = contadorSudamerica;
 								break;
 								case 5:
 									contadorEuropa++;
-									*confederacionEuropea += contadorEuropa;
+									*confederacionEuropea = contadorEuropa;
 								break;
 								case 6:
 									contadorOceania++;
-									*confederacionOceania += contadorOceania;
+									*confederacionOceania = contadorOceania;
 								break;
 
 							}
